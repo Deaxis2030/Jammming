@@ -1,4 +1,5 @@
-
+import React from 'react';
+import SearchBar from './SearchBar';
 import './App.css';
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
         Jamming
       </header>
       <body>
-        
+        <SearchBar/>
       </body>
     </div>
   );
