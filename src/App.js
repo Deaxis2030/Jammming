@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import './App.css';
+import Tracklist from './Tracklist';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       </header>
       <body>
         <SearchBar/>
+        <Tracklist/>
       </body>
     </div>
   );
