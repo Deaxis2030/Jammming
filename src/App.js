@@ -1,17 +1,39 @@
-import React from 'react';
-import SearchBar from './SearchBar';
+import React, {useState} from 'react';
+import SearchBar from './Search/SearchBar';
 import './App.css';
-import Tracklist from './Tracklist';
+import Tracklist from './TrackInfo/Tracklist';
+import SearchResults from './Search/SearchResults';
+import {getTracks} from './TrackInfo/Tracks'
+import SpotifyBtn from './Buttons/SpotifyBtn';
 
 function App() {
+
+  const [songList, setSongList] = useState ([]);
+
+  const addSong = (song) => {
+      setSongList ((prev) => [song, ...prev]);
+  };
+
+  const removeSong = (songToRemove) => {
+      setSongList ((songList) => {
+          songList.filter((song) => song.id !== songToRemove)
+      });
+  };
+
   return (
     <div>
       <header>
-        Jamming
+        Jammming
       </header>
       <body>
-        <SearchBar/>
-        <Tracklist/>
+        <div>
+          <SearchBar getTracks={getTracks}/>
+        </div>
+        
+        <div className='playList'>
+
+        </div>
+
       </body>
     </div>
   );
