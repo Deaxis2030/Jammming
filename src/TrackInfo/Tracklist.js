@@ -4,13 +4,10 @@ export default function Tracklist (props) {
 
     
     const {song, removeSong, addSong} = props;
-
-    const handleRemoveClick = () => {
-        removeSong(song.id);
-    };
-
-    const handleAddclick = () => {
-        addSong(song.id)
+    
+    const handleAddclick = ({target}) => {
+        addSong(target.value);
+        console.log (target.value);
     };
 
     let text ="";
@@ -21,20 +18,19 @@ export default function Tracklist (props) {
     return (
 
         <div className="Tracklist">
-            <button aria-label="Remove Song"
-                    className="removeSongBtn"
-                    onClick={handleRemoveClick}
-            >
-                &times;
-            </button>
-            <div key={song.id}>{song.songName} - {song.artist} - {song.album}</div>
+          
+            <div>{song.songName} - {song.artist} - {song.album}</div>
             <button aria-label="Add Song"
                     className="addSongBtn"
-                    onclick={handleAddclick}
+                    onClick={handleAddclick}
                     onMouseOver={handleHover}
+                    value={song.id}
             >
                 &#43;{text}
             </button>
+            <div id="alreadyAdded" style={{display: "hidden"}}>
+                Song already added
+            </div>
         </div>
 
     );
