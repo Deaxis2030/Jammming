@@ -7,7 +7,7 @@ export default function Tracklist (props) {
     
     const handleAddclick = ({target}) => {
         addSong(target.value);
-        console.log (target.value);
+       // console.log (target.value);
     };
 
     let text ="";
