@@ -8,10 +8,6 @@ export default function Tracklist (props) {
         addSong(target.value);
     };
 
-    let text ="";
-    const handleHover = () => {
-        text="Add Song to Playlist?" 
-    };
 
     return (
 
@@ -21,14 +17,10 @@ export default function Tracklist (props) {
             <button aria-label="Add Song"
                     className="addSongBtn"
                     onClick={handleAddclick}
-                    onMouseOver={handleHover}
                     value={song.id}
             >
                 &#43;{text}
             </button>
-            <div id="alreadyAdded" style={{display: "hidden"}}>
-                Song already added
-            </div>
         </div>
 
     );
