@@ -9,7 +9,6 @@ export async function getTracks(searchInput, token) {
         }
     });
     const data = await response.json();
-   // console.log("is this object object object?",data)
     return data.tracks.items;
     
 }
@@ -25,7 +24,6 @@ export async function getUserId(token) {
     
     if (response.ok) {
         const data = await response.json();
-       // console.log ("User ID Data", data.id )
         return data.id;
     }
   }
