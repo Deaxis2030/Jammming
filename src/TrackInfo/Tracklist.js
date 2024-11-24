@@ -8,21 +8,17 @@ export default function Tracklist (props) {
         addSong(target.value);
     };
 
-
     return (
-
         <div className="Tracklist">
-          
-            <div>{song.name} - {song.artists.name} - {song.album.name}</div>
+            <div>Song: {song.name} Artist: {song.artists.name} Album: {song.album.name}</div>
             <button aria-label="Add Song"
                     className="addSongBtn"
                     onClick={handleAddclick}
                     value={song.id}
             >
-                &#43;{text}
+                &#43;
             </button>
         </div>
-
     );
 
 };
