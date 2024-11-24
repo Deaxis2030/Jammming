@@ -7,10 +7,12 @@ export default function Tracklist (props) {
     const handleAddclick = ({target}) => {
         addSong(target.value);
     };
-
+ 
+    const artistName = song.artists.map((artist, i) => (i? ", ": "") + artist.name);
+    console.log("artist name", artistName)
     return (
         <div className="Tracklist">
-            <div>Song: {song.name} Artist: {song.artists.name} Album: {song.album.name}</div>
+            <div>Song: {song.name} - Artist: {artistName} - Album: {song.album.name}</div>
             <button aria-label="Add Song"
                     className="addSongBtn"
                     onClick={handleAddclick}
