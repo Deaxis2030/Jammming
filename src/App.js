@@ -15,8 +15,10 @@ function App() {
 
   const urlParams = new URLSearchParams(window.location.hash);
   const token = urlParams.get("#access_token");
+  const tokenExpireTime = urlParams.get("expires_in")*1000;
+  console.log("text beside", tokenExpireTime);
 
-  // Function below gets access token and user ID 
+  // Function below gets access token and user ID and refreshes token after 1 hour 
   useEffect(() => {
       const fetchToken = () => {
         GetAccessToken();
@@ -25,6 +27,9 @@ function App() {
         fetchToken();
       } else {
         setId();
+        setTimeout(() => {
+          GetAccessToken();
+        }, tokenExpireTime);
       }
      }, []); 
   
@@ -91,7 +96,6 @@ function App() {
     setSongList([]);
     setName("");
   }
-
   
   return (
     <div>
