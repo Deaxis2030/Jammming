@@ -1,45 +1,87 @@
-const Tracks= [
-    {   
-        songName: "Song 1",
-        artist: "Guy 1",
-        album: "first",
-        id: "001"
-    },
-    {
-        songName: "Song 2",
-        artist: "Guy 2",
-        album: "Second",
-        id: "002"
-    },
-    {
-        songName: "Song 3",
-        artist: "Guy 3",
-        album: "Third",
-        id: "003"
-    },
-    {
-        songName: "Song 4",
-        artist: "Guy 4",
-        album: "Fourth",
-        id: "004"
-    },
-    {
-        songName: "Song 5",
-        artist: "Guy 5",
-        album: "Fifth",
-        id: "005"
-    },
 
-];
+let url = "https://api.spotify.com/v1/";
 
-const getTracks = (text) => {
-    return Tracks.filter ((track) => {
-      return  (track.songName.includes(text)) || (track.artist.includes(text)) || (track.album.includes(text))
+export async function getTracks(searchInput, token) {
+    const response = await fetch(url + "search?q=" + searchInput + "&type=track", {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
     });
-};
+    const data = await response.json();
+   // console.log("is this object object object?",data)
+    return data.tracks.items;
+    
+}
 
-export {getTracks};
+export async function getUserId(token) {
+  try {
+    const response = await fetch (url+"me", {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+    
+    if (response.ok) {
+        const data = await response.json();
+       // console.log ("User ID Data", data.id )
+        return data.id;
+    }
+  }
+  catch (err) {
+    console.log(`this is the error: ${err}`);
+  }
+}
 
-//const TrackData = JSON.stringify(Tracks);
 
-//export default TrackData;
+
+export async function postPlaylist(token, userId, name) {
+    console.log(`User ID ${userId}`)
+    try {
+        const response  = await fetch(`${url}users/${userId}/playlists`, {
+      
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({
+            name: name,
+            public: false
+        })
+
+    });
+    if (response.ok) {
+        const data = await response.json();
+        return data.id;
+    }
+    }
+    catch (err) {
+        console.log (`The err we want ${err}`);
+    }
+}
+
+
+export async function addSongToPlaylist(token, playlistId, uriList) {
+
+    const response  = await fetch(`${url}playlists/${playlistId}/tracks`, {
+      
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify({
+            uris: uriList,
+        })
+
+    })
+    if (response.ok) {
+        alert("Playlist saved!");
+        const data = await response.json();
+        console.log("Saved Playlisst data", data);
+        return data;
+    }
+}
+
+
+
