@@ -1,13 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 
 export default function Playlist (props) {
     
-    const {songList, removeSong} = props; 
+    const {songList, removeSong, name, handleChange} = props; 
 
-    const [name, setName] = useState("");
-
-    const handleChange = ({target}) => {
-        setName(target.value);
+   
+    const handleTextChange = ({target}) => {
+        handleChange(target.value);
     };
 
     const handleRemoveClick = ({target}) => {
@@ -22,13 +21,13 @@ export default function Playlist (props) {
                 value={name}
                 type="text"
                 name="PlaylistName"
-                onChange={handleChange}
+                onChange={handleTextChange}
         >
         </input>
             <div>
                {songList.map((track) => (
-                <div>
-                    <h3 key={track.id}>{track.title} - {track.artist} - {track.album}</h3>
+                <div key={track.id}>
+                    <h3>{track.name} - {track.artists.name} - {track.album.name}</h3>
                     <button aria-label="Remove Song"
                             className="removeSongBtn"
                             onClick={handleRemoveClick}
