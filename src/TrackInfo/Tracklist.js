@@ -3,11 +3,9 @@ import React from "react";
 export default function Tracklist (props) {
 
     
-    const {song, removeSong, addSong} = props;
-    
+    const {song, addSong} = props;
     const handleAddclick = ({target}) => {
         addSong(target.value);
-       // console.log (target.value);
     };
 
     let text ="";
@@ -19,7 +17,7 @@ export default function Tracklist (props) {
 
         <div className="Tracklist">
           
-            <div>{song.songName} - {song.artist} - {song.album}</div>
+            <div>{song.name} - {song.artists.name} - {song.album.name}</div>
             <button aria-label="Add Song"
                     className="addSongBtn"
                     onClick={handleAddclick}
