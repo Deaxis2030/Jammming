@@ -9,15 +9,12 @@ import Playlist from './TrackInfo/Playlist';
 
 import GetAccessToken from './Requests/GetAccessToken';
 
-
-
 function App() {
 
   const urlParams = new URLSearchParams(window.location.hash);
   const token = urlParams.get("#access_token");
   const tokenExpireTime = urlParams.get("expires_in")*1000;
-  console.log("text beside", tokenExpireTime);
-
+ 
   // Function below gets access token and user ID and refreshes token after 1 hour 
   useEffect(() => {
       const fetchToken = () => {
@@ -28,7 +25,7 @@ function App() {
       } else {
         setId();
         setTimeout(() => {
-          GetAccessToken();
+          document.location = "http://localhost:3000/";
         }, tokenExpireTime);
       }
      }, []); 
