@@ -27,7 +27,7 @@ export default function Playlist (props) {
             <div>
                {songList.map((track) => (
                 <div key={track.id}>
-                    <h3>{track.name} - {track.artists.name} - {track.album.name}</h3>
+                    <h3>Song Name: {track.name} - Artist(s) Name: {track.artists.map((artist, i) => (i? ", ": "") + artist.name)} - Album: {track.album.name}</h3>
                     <button aria-label="Remove Song"
                             className="removeSongBtn"
                             onClick={handleRemoveClick}
