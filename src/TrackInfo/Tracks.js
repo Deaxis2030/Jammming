@@ -35,7 +35,6 @@ export async function getUserId(token) {
 
 
 export async function postPlaylist(token, userId, name) {
-    console.log(`User ID ${userId}`)
     try {
         const response  = await fetch(`${url}users/${userId}/playlists`, {
       
