@@ -28,7 +28,7 @@ export async function getUserId(token) {
     }
   }
   catch (err) {
-    console.log(`this is the error: ${err}`);
+    console.log(`Error: ${err}`);
   }
 }
 
@@ -54,7 +54,7 @@ export async function postPlaylist(token, userId, name) {
     }
     }
     catch (err) {
-        console.log (`The err we want ${err}`);
+        console.log (`Error: ${err}`);
     }
 }
 
@@ -75,7 +75,6 @@ export async function addSongToPlaylist(token, playlistId, uriList) {
     if (response.ok) {
         alert("Playlist saved!");
         const data = await response.json();
-        console.log("Saved Playlisst data", data);
         return data;
     }
 }
