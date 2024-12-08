@@ -12,7 +12,11 @@ export default function Tracklist (props) {
    
     return (
         <div className={styles.Tracklist}>
-            <div>Song: {song.name} - Artist: {artistName} - Album: {song.album.name}</div>
+            <div>
+                <h3>{song.name} </h3>
+                <h4><i>{artistName}</i></h4>
+                <h4>Album - {song.album.name}</h4>
+            </div>
             <button aria-label="Add-Song"
                     className={styles.addSongBtn}
                     onClick={handleAddclick}

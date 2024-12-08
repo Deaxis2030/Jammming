@@ -25,11 +25,16 @@ export default function Playlist (props) {
                     onChange={handleTextChange}
                 >
                 </input>
-            <div className={styles.PlaylistTracks}>
-                <div>
+            <div className={styles.PlaylistTracks}
+                 
+            >
+                <div aria-label="Playlist"
+                     data-testid="Playlist">
                 {songList.map((track) => (
                     <div key={track.id}>
-                        <h3>Song Name: {track.name} - Artist(s) Name: {track.artists.map((artist, i) => (i? ", ": "") + artist.name)} - Album: {track.album.name}</h3>
+                        <h3>{track.name}</h3> 
+                        <h4><i>{track.artists.map((artist, i) => (i? ", ": "") + artist.name)}</i></h4> 
+                        <h4>Album - {track.album.name}</h4>
                         <button aria-label="Remove-Song"
                                 className={styles.removeSongBtn}
                                 onClick={handleRemoveClick}
