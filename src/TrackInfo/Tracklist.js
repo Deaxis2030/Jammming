@@ -13,7 +13,7 @@ export default function Tracklist (props) {
     return (
         <div className={styles.Tracklist}>
             <div>
-                <h3>{song.name} </h3>
+                <h3>{song.name}</h3>
                 <h4><i>{artistName}</i></h4>
                 <h4>Album - {song.album.name}</h4>
             </div>
