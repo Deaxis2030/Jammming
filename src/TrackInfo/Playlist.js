@@ -25,11 +25,8 @@ export default function Playlist (props) {
                     onChange={handleTextChange}
                 >
                 </input>
-            <div className={styles.PlaylistTracks}
-                 
-            >
-                <div aria-label="Playlist"
-                     data-testid="Playlist">
+            <div className={styles.PlaylistTracks}>
+                <div aria-label="Playlist">
                 {songList.map((track) => (
                     <div key={track.id}>
                         <h3>{track.name}</h3> 
