@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import SearchBar from './Search/SearchBar';
-import './App.css';
+import styles from "./Stylings/Styles.module.css";
 import SearchResults from './Search/SearchResults';
-import {getTracks, getUserId} from './TrackInfo/Tracks'
+import getTracks from './TrackInfo/Tracks';
+import getUserId from './GetUserId/GetUserId';
 import SpotifyBtn from './Buttons/SpotifyBtn';
-import styles from './Stylings/App.module.css'
 import Playlist from './TrackInfo/Playlist';
-
 import GetAccessToken from './Requests/GetAccessToken';
 
 function App() {
@@ -99,19 +98,23 @@ function App() {
       <header className={styles.mainHeader}>
         Jammming
       </header>
-      <main>
-        <div>
-          <SearchBar text={text} handleSubmit={handleSubmit} handleTextChange={handleTextChange}/>
+      <main className={styles.mainBody}>
+        <div className={styles.searchBarContainer}>
+          <div>
+            <SearchBar text={text} handleSubmit={handleSubmit} handleTextChange={handleTextChange}/>
+          </div>
+          <div className={styles.SearchResults}>
+            <SearchResults addSong={addSong} results={results} token={token}/>
+          </div>
         </div>
-        <div className="results">
-          <SearchResults addSong={addSong} results={results} token={token}/>
+        <div className={styles.playlistContainer}>
+          <div>
+              <Playlist name={name} handleChange={handleChange} removeSong={removeSong} songList={songList}/>
+          </div>
+          <div className={styles.SpotifyBtnContainer}>
+              <SpotifyBtn resetPlaylist={resetPlaylist} name={name} userId={userId} token={token} uriList={uriList} />
+          </div>
         </div>
-        <div>
-            <Playlist name={name} handleChange={handleChange} removeSong={removeSong} songList={songList}/>
-         </div>
-         <div>
-            <SpotifyBtn resetPlaylist={resetPlaylist} name={name} userId={userId} token={token} uriList={uriList} />
-         </div>
       </main>
     </div>
   );
