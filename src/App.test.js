@@ -95,8 +95,6 @@ it ("Should Test App functions", async ()=> {
     userEvent.click(SpotifyBtn);
 
     await waitFor(()=> {
-      
-      const playlist = screen.getByLabelText("Playlist");
       const checking = screen.getAllByRole("heading", {name:/Leave Your Mark/i});
       expect(checking).toHaveLength(1);
       
