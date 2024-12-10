@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Stylings/searchBarStyles.module.css"
+import styles from "../Stylings/Styles.module.css";
 
 export default function SearchBar (props) {
 
@@ -13,10 +13,9 @@ export default function SearchBar (props) {
         handleTextChange (event);
     };
     
-
     return (
-        <div className={styles.searchBar}>
-            <form className="example" action="action_page.php" onSubmit={onSubmitfunc}>
+        <div className={styles.SearchBar}>
+            <form className={styles.example} action="action_page.php" onSubmit={onSubmitfunc}>
                 <input  type="text" 
                         value={text}
                         placeholder="Search..." 
@@ -24,7 +23,7 @@ export default function SearchBar (props) {
                         onChange={handleTextChangefunc}
                         aria-label="search"
                 ></input>
-                <button type="submit"><i className="fa fa-search"></i></button>
+                <button aria-label="search-button" type="submit"><i className="fa fa-search"></i></button>
             </form>
         </div>
     );
