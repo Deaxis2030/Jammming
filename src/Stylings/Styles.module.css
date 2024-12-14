@@ -1,5 +1,7 @@
+/*Main Section*/
 html {
 	margin: 0;
+    padding: 0;
 	height: 100%;
     font-size: 16px;
     box-sizing: border-box;
@@ -7,8 +9,11 @@ html {
     color: rgb(255, 255, 255);
 }
 
-h1 {
+h1, .Preview h1 {
     font-family: "Cinzel Decorative";
+    text-shadow: 3px 3px 0px rgb(4, 18, 94);
+    font-weight: 900;
+    font-size: 2.3rem;
 }
 
 .mainHeader {
@@ -18,6 +23,7 @@ h1 {
     margin-bottom: 3rem;
     font-family: "Cinzel Decorative";
     font-weight: 500;
+    text-shadow: 3px 3px 0px rgb(4, 18, 94);
 }
 
 .mainBody {
@@ -27,6 +33,36 @@ h1 {
     justify-content: space-around;
 }
 
+
+/*Welcome Page*/
+.Welcome {
+    width: 100%;
+    justify-items: center;
+}
+.WelcomeHeader {
+    font-size: 8rem;
+    font-family: "Cinzel Decorative";
+    text-align: center;
+    font-weight: 700;
+}
+
+.WelcomeButton{
+    width: auto;
+    text-transform: uppercase;
+    height: 6rem;
+    font-family: "IBM Plex Mono";
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    background-color: rgb(33, 176, 253);
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
+    border-radius: 4px;
+}
+
+
+
+/*Search Section*/
+
 .searchBarContainer {
     margin-top: 2rem;
     width: 30rem;
@@ -35,6 +71,7 @@ h1 {
 
 .SearchBar {
     margin-right: 2rem;
+    margin-top: 0.85rem;
 }
 
 .SearchBar input {
@@ -50,7 +87,7 @@ h1 {
     width: 3rem;
     font-size: 1.2rem;
     border-radius: 4px;
-    background-color: rgb(205, 205, 240);
+    background-color: rgb(33, 176, 253);
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
 }
 
@@ -66,10 +103,11 @@ h1 {
     height: 30rem;
     overflow-y: scroll;
     scrollbar-width: thin;
-    scrollbar-color: rgba(201, 24, 24, 0.911), rgba(184, 11, 11, 0.9);
-    margin-top: 4rem;
+    scrollbar-color: rgba(201, 24, 24, 0) rgba(184, 11, 11, 0);
+    margin-top: 5.5rem;
     border-radius: 1rem;
     width: 30rem;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
 }
 
 .Tracklist {
@@ -81,6 +119,16 @@ h1 {
     color: rgb(12, 10, 104);
 }
 
+.TracksBtnCont{
+    display: flex;
+    height: 5rem;
+}
+
+.TracksBtnCont button {
+    font-family: "IBM Plex Mono";
+    font-size: 1rem;
+    font-weight: 900;
+}
 .addSongBtn {
     margin-top: 2rem;
     margin-bottom: 3rem;
@@ -88,23 +136,20 @@ h1 {
     background-color: rgb(205, 205, 240);
     width: 3rem;
     height: 2rem;
-    border-radius: 4px;
+    border-radius: 0.5rem;
+
 }
 
 .button:active {
-    color: brown;
-    background-color: rgb(212, 174, 93) ;
     box-shadow: none;
-    /*font-size: 1.1rem;*/
-    transition: font-size 0s, background-color 0s;
-    margin-top: 2px;
-    margin-bottom: -2px;
+    margin-top: 2rem;
+    margin-bottom: -3rem;
   }
 
+/*Playlist Section*/
 
 .playlistContainer {
     justify-items: center;
-    margin-right: 6rem;
     text-align: center;
     width: 30rem;
     height: 40rem;
@@ -118,18 +163,7 @@ h1 {
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
 }
 
-.removeSongBtn {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
-    background-color: rgb(205, 205, 240);
-    width: 3rem;
-    height: 2rem;
-    border-radius: 4px;
-}
-
-
-.PlaylistTracks {
+.Playlist {
     font-family: "IBM Plex Mono";
     font-weight: 700;
     background-image: url("../Images/—Pngtree—blue\ creative\ music\ background_1438100.jpg");
@@ -147,8 +181,26 @@ h1 {
     width: 30rem;
     color: rgb(12, 10, 104);
     scrollbar-width: thin;
+    scrollbar-color: rgba(24, 67, 209, 0) rgba(85, 165, 230, 0);
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
+    padding-right: 0;
 }
 
+.PlaylistTracks{
+    margin-left: 1rem;
+    justify-items: center;
+}
+.removeSongBtn {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
+    background-color: rgb(205, 205, 240);
+    width: 3rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    font-family: "IBM Plex Mono";
+    font-weight: 900;
+}
 
 .SpotifyBtn{
     width: 10rem;
@@ -157,10 +209,117 @@ h1 {
     font-weight: 900;
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
     margin-top: 1rem;
+    margin-left: 1rem;
     font-family: "IBM Plex Mono";
     text-align: center;
     text-transform: uppercase;
     border-radius: 4px;
     background-color: rgb(78, 78, 206);
     color: rgb(255, 255, 255);
+}
+
+
+/*Preview Section*/
+
+.PreviewContainer {
+    justify-items: center;
+    text-align: center;
+    width: 30rem;
+    height: 40rem;
+}
+
+.Preview {
+    background-image: url("../Images/—Pngtree—blue\ creative\ music\ background_1438100.jpg");
+    background-position: 10%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-blend-mode: overlay;
+    justify-items: center;
+    text-align: center;
+    height: 30rem;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(201, 24, 24, 0) rgba(184, 11, 11, 0);
+    margin-top: 6.5rem;
+    border-radius: 1rem;
+    width: 30rem;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
+}
+
+.PreviewBtn {
+    margin-left: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
+    background-color: rgb(205, 205, 240);
+    width: auto;
+    height: 2rem;
+    border-radius: 0.5rem;
+    font-family: "IBM Plex Mono";
+    font-weight: 900;
+}
+
+.Preview img {
+    width: 70%;
+    height: auto;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
+    border-radius: 0.5rem;
+}
+
+h6 {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-family: "Cinzel Decorative";
+    text-shadow: 1.2px 1.2px 0px rgb(131, 135, 185);
+    font-weight: 900;
+    font-size: 1rem;
+
+}
+
+.AudioPlayerContainer {
+    margin-left: 1rem;
+    color: rgb(12, 10, 104);
+}
+
+audio{
+    border-radius: 1.5rem;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
+    background-color: rgba(240, 248, 255, 0);
+    margin-top: 0.5rem;
+}
+
+
+/*Saved Page*/
+
+.SavePage {
+    width: 100%;
+    justify-items: center;
+    font-size: 8rem;
+    font-family: "Cinzel Decorative";
+    text-align: center;
+    font-weight: 700;
+}
+
+.SavedHeader {
+    font-size: 8rem;
+    font-family: "Cinzel Decorative";
+    text-align: center;
+    font-weight: 700;
+}
+
+
+.SavedButton{
+    width: auto;
+    text-transform: uppercase;
+    height: 6rem;
+    font-family: "IBM Plex Mono";
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    background-color: rgb(33, 176, 253);
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.99);
+    border-radius: 4px;
 }
