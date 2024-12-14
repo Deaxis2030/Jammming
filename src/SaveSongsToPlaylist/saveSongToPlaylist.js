@@ -14,7 +14,6 @@ export default async function saveSongsToPlaylist(token, playlistId, uriList) {
 
     })
     if (response.ok) {
-        alert("Playlist saved!");
         const data = await response.json();
         return data;
     }
