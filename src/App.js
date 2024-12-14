@@ -24,7 +24,7 @@ function App() {
           document.location = "http://localhost:3000/";
         }, tokenExpireTime);
       }
-     }, []); 
+     }, [token]); 
     
     
 
