@@ -24,7 +24,8 @@ function App() {
           document.location = "http://localhost:3000/";
         }, tokenExpireTime);
       }
-     }, [tokenExpireTime]); 
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+     }, []); 
     
     
 
