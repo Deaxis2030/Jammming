@@ -5,13 +5,14 @@ import styles from "../Stylings/Styles.module.css";
 
 export default function SpotifyBtn (props) {
    
-    const {name, token, uriList, userId, resetPlaylist} = props;
+    const {loadingData, name, token, uriList, userId, resetPlaylist} = props;
     
     const handleSaveClick = async () => {
 
         if (name && (uriList.length > 0)) { 
             const playlistId = await postPlaylist (token, userId, name);
-            saveSongsToPlaylist(token, playlistId, uriList);
+            const savedData = await saveSongsToPlaylist(token, playlistId, uriList);
+            loadingData(savedData.snapshot_id);
             resetPlaylist();
         } else {
             alert("Please enter name of playist or add songs to list to save it!");
