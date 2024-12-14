@@ -11,7 +11,9 @@ export default function Preview (props) {
             <h1>Preview</h1>
             <div  className={styles.Preview}>
                 <div className={styles.imgContainer}>    
-                    <img src={preview.image}></img>
+                    <img alt="Album-Cover"
+                         src={preview.image}
+                         ></img>
                 </div>
                 <div className={styles.AudioPlayerContainer}>
                   <audio src={preview.playback} controls />
