@@ -6,7 +6,9 @@ import getTracks from './TrackInfo/Tracks';
 import getUserId from './GetUserId/GetUserId';
 import SpotifyBtn from './Buttons/SpotifyBtn';
 import Playlist from './TrackInfo/Playlist';
-import GetAccessToken from './Requests/GetAccessToken';
+import SavingPage from './SavingPage/SavingPage';
+import Preview from './Preview Component/Preview';
+import Welcome from './WelcomePage/Welcome';
 
 function App() {
 
@@ -16,19 +18,34 @@ function App() {
  
   // Function below gets access token and user ID and refreshes token after 1 hour 
   useEffect(() => {
-      const fetchToken = () => {
-        GetAccessToken();
-      };
-      if (!token) {
-        fetchToken();
-      } else {
+      if (token) {
         setId();
         setTimeout(() => {
           document.location = "http://localhost:3000/";
         }, tokenExpireTime);
       }
      }, []); 
-  
+    
+    
+
+    // Function below gets song preview and sets Preview Text
+    const [preview, setPreview] = useState({});
+    const [previewText, setPreviewText] = useState("Click on a preview to play song");
+    const showPreview = async (song) => {
+    const vals = {
+      image: song.album.images[0].url,
+      playback: song.preview_url,
+    };
+    setPreview(vals);
+
+    const check = await preview.playback;
+    if (!check) {
+      setPreviewText("No Playback song available");
+    } else {
+      setPreviewText("Playing");
+    };
+    };
+   
     // Function below stores userID 
     const [userId, setUserId] = useState("");
     const setId = async () => {
@@ -53,10 +70,11 @@ function App() {
     const handleSubmit = async(event) => {
       event.preventDefault();
       if (text.length) {
-            const list = await getTracks(text, token)
-            setResults(list);
-          }
+         const list = await getTracks(text, token)
+         setResults(list);
+      }
     };
+    //console.log("Results", results)
 
     // Function below adds song to a list for creating the playlist
     const [songList, setSongList] = useState ([]);
@@ -92,30 +110,50 @@ function App() {
     setSongList([]);
     setName("");
   }
+
+  //Function below stores return snapshot ID from saved playlist
+  const [savedDataId, setSavedDataId] = useState(null);
+  const loadingData = (savedData) => {
+    setSavedDataId(savedData);
+  };
+
+  //Function below resets savedDataId to null
+  const resetDataId = () => {
+    setSavedDataId(null);
+  };
   
   return (
     <div>
-      <header className={styles.mainHeader}>
-        Jammming
-      </header>
-      <main className={styles.mainBody}>
-        <div className={styles.searchBarContainer}>
-          <div>
-            <SearchBar text={text} handleSubmit={handleSubmit} handleTextChange={handleTextChange}/>
+      
+      {token? <main>
+        {savedDataId? <SavingPage resetDataId={resetDataId} />: <div>
+          <header className={styles.mainHeader}>
+            Jammming
+          </header>
+           <div  className={styles.mainBody}>  
+            <div className={styles.searchBarContainer}>
+              <div>
+                <SearchBar text={text} handleSubmit={handleSubmit} handleTextChange={handleTextChange}/>
+              </div>
+              <div className={styles.SearchResults}>
+                <SearchResults addSong={addSong} results={results} showPreview={showPreview} token={token}/>
+              </div>
+            </div>
+            <div>
+                  <Preview previewText={previewText} preview={preview} />
+              </div>
+            <div className={styles.playlistContainer}>
+              <div>
+                  <Playlist name={name} handleChange={handleChange} removeSong={removeSong} showPreview={showPreview} songList={songList}/>
+              </div>
+              <div className={styles.SpotifyBtnContainer}>
+                  <SpotifyBtn loadingData={loadingData} resetPlaylist={resetPlaylist} name={name} userId={userId} token={token} uriList={uriList} />
+              </div>
+            </div>
+              </div>
           </div>
-          <div className={styles.SearchResults}>
-            <SearchResults addSong={addSong} results={results} token={token}/>
-          </div>
-        </div>
-        <div className={styles.playlistContainer}>
-          <div>
-              <Playlist name={name} handleChange={handleChange} removeSong={removeSong} songList={songList}/>
-          </div>
-          <div className={styles.SpotifyBtnContainer}>
-              <SpotifyBtn resetPlaylist={resetPlaylist} name={name} userId={userId} token={token} uriList={uriList} />
-          </div>
-        </div>
-      </main>
+          }
+      </main> : <Welcome />}
     </div>
   );
 }
