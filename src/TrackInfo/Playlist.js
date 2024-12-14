@@ -3,8 +3,7 @@ import styles from "../Stylings/Styles.module.css";
 
 export default function Playlist (props) {
     
-    const {songList, removeSong, name, handleChange} = props; 
-
+    const {songList, removeSong, name, handleChange, showPreview} = props; 
    
     const handleTextChange = ({target}) => {
         handleChange(target.value);
@@ -25,20 +24,32 @@ export default function Playlist (props) {
                     onChange={handleTextChange}
                 >
                 </input>
-            <div className={styles.PlaylistTracks}>
+            <div className={styles.Playlist}>
                 <div aria-label="Playlist">
                 {songList.map((track) => (
-                    <div key={track.id}>
+                    <div className={styles.PlaylistTracks}
+                         key={track.id}
+                         >
                         <h3>{track.name}</h3> 
                         <h4><i>{track.artists.map((artist, i) => (i? ", ": "") + artist.name)}</i></h4> 
                         <h4>Album - {track.album.name}</h4>
-                        <button aria-label="Remove-Song"
-                                className={styles.removeSongBtn}
-                                onClick={handleRemoveClick}
-                                value={track.id}
-                                >
-                            &times;
-                        </button>
+                        <div className={styles.TracksBtnCont}>
+                            <button aria-label="Remove-Song"
+                                    className={styles.removeSongBtn}
+                                    onClick={handleRemoveClick}
+                                    value={track.id}
+                                    >
+                                RMV
+                            </button>
+                        
+                            <button aria-label="Preview-Btn"
+                                    className={styles.PreviewBtn}
+                                    onClick={()=>{showPreview(track)}}
+                                    value={track.id}
+                                    >
+                                Preview
+                            </button>
+                        </div>
                     </div>
                 ))}
                 </div>
