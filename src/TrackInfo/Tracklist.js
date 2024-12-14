@@ -2,11 +2,15 @@ import React from "react";
 import styles from "../Stylings/Styles.module.css";
 
 export default function Tracklist (props) {
-    const {song, addSong} = props;
+    const {song, addSong, showPreview} = props;
    
-    const handleAddclick = ({target}) => {
+    const handleAddClick = ({target}) => {
         addSong(target.value);
     };
+    
+    const handlePreviewClick = (() => {
+        showPreview(song)
+    })
  
     const artistName = song.artists.map((artist, i) => (i? ", ": "") + artist.name);
    
@@ -17,13 +21,22 @@ export default function Tracklist (props) {
                 <h4><i>{artistName}</i></h4>
                 <h4>Album - {song.album.name}</h4>
             </div>
-            <button aria-label="Add-Song"
-                    className={styles.addSongBtn}
-                    onClick={handleAddclick}
-                    value={song.id}
-            >
-                &#43;
-            </button>
+           <div className={styles.TracksBtnCont}>
+                <button aria-label="Add-Song"
+                        className={styles.addSongBtn}
+                        onClick={handleAddClick}
+                        value={song.id}
+                    >
+                   Add
+                </button>
+                <button aria-label="Preview-Btn"
+                        className={styles.PreviewBtn}
+                        onClick={handlePreviewClick}
+                        value={song.id}
+                >
+                    Preview
+                </button>
+           </div>
         </div>
     );
 
