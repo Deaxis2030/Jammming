@@ -21,7 +21,7 @@ function App() {
       if (token) {
         setId();
         setTimeout(() => {
-          document.location = "http://localhost:3000/";
+          document.location = "https://malcolm-jammming.netlify.app";
         }, tokenExpireTime);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps

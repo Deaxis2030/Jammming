@@ -2,7 +2,7 @@
 
 export default function GetAccessToken () {
     const client_id = '88a024cbfe354afdbb9ccaf5dbe1ddc8';
-    const redirect_uri = 'http://localhost:3000/callback';
+    const redirect_uri = 'https://malcolm-jammming.netlify.app';
 
     const generateRandomString = (length) => {
         const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
